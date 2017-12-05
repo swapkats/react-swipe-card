@@ -10,7 +10,7 @@ const CustomAlertRight = () => <span>Ok</span>
 
 storiesOf('Tinder card', module)
   .add('simple', () => (
-    <div>
+    <div className="container">
       <h1>react swipe card</h1>
       <Cards onEnd={action('end')} className='master-root'>
         {data.map((item, key) =>

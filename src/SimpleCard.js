@@ -28,13 +28,19 @@ class Card extends Component {
   }
 
   render () {
-    const { initialPosition: { x, y } } = this.state
-    const { className = 'inactive', beingSwiped } = this.props
+    const { initialPosition, initialPosition: { x, y } } = this.state
+    const { className = 'inactive', beingSwiped, swipeDirection } = this.props
     var style = {
-      ...translate3d(x, y, beingSwiped),
+      ...translate3d(x, y, beingSwiped, initialPosition),
       zIndex: this.props.index,
       ...this.props.style
     }
+
+    const children = React.Children.map(this.props.children, child => {
+      return React.cloneElement(child, {
+        swipeDirection: swipeDirection
+      });
+    });
 
     return (
       <div style={style} className={`card ${className}`}>

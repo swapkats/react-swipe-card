@@ -16,6 +16,7 @@ class DraggableCard extends Component {
       animation: null,
       pristine: true,
       beingSwiped: false,
+      swipeDirection: 'none',
     }
     this.resetPosition = this.resetPosition.bind(this)
     this.handlePan = this.handlePan.bind(this)
@@ -88,6 +89,7 @@ class DraggableCard extends Component {
   }
 
   calculatePosition (deltaX, deltaY) {
+    this.setState({ swipeDirection: deltaX < 0 ? 'left' : 'right' });
     const { initialPosition : { x, y } } = this.state
     return {
       x: (x + deltaX),
@@ -113,10 +115,10 @@ class DraggableCard extends Component {
     window.removeEventListener('resize', this.resetPosition)
   }
   render () {
-    const { x, y, animation, beingSwiped, pristine } = this.state
+    const { x, y, animation, beingSwiped, pristine, initialPosition, swipeDirection } = this.state
     // console.log(beingSwiped);
-    const style = translate3d(x, y, beingSwiped)
-    return <SimpleCard {...this.props} beingSwiped={beingSwiped} style={style} className={animation ? 'animate' : pristine ? 'inactive' : '' } />
+    const style = translate3d(x, y, beingSwiped, initialPosition)
+    return <SimpleCard {...this.props} beingSwiped={beingSwiped} swipeDirection={swipeDirection} style={style} className={animation ? 'animate' : pristine ? 'inactive' : '' } />
   }
 }
 

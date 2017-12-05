@@ -1,4 +1,4 @@
-const calculateAngle = (distance, boundary = 200) => {
+const calculateAngle = (distance, boundary = 300) => {
   let radians;
   radians = distance/boundary;
   if (radians < 0) {
@@ -11,13 +11,13 @@ const calculateAngle = (distance, boundary = 200) => {
   return degrees;
 }
 
-export const translate3d = (x, y, beingSwiped = false) => {
+export const translate3d = (x, y, beingSwiped = false, initialPosition) => {
   let translate;
-  console.log(beingSwiped);
+  console.log(initialPosition, x, y);
   if (!beingSwiped) {
     translate = `translate3d(${x}px, ${y}px, 0px)`
   } else {
-    translate = `translate3d(${x}px, ${Math.abs(x)}px, 0) rotate(${calculateAngle(x)}deg)`
+    translate = `translate3d(${initialPosition.x + x}px, ${initialPosition.y + Math.abs(x)}px, 0) rotate(${calculateAngle(x)}deg)`
   }
   return {
     msTransform: translate,

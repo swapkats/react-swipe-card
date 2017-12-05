@@ -34,8 +34,8 @@
     "babel-preset-stage-0": "^6.3.13",
     "conventional-changelog": "^1.1.0",
     "conventional-changelog-cli": "^1.2.0",
-    "superheroes": "^1.0.0",
-    "release-it": "^2.5.3"
+    "release-it": "^2.5.3",
+    "superheroes": "^1.0.0"
   },
   "peerDependencies": {
     "react": "^15.4.2",
