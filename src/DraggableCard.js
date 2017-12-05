@@ -13,7 +13,8 @@ class DraggableCard extends Component {
       initialPosition: { x: 0, y: 0 },
       startPosition: { x: 0, y: 0 },
       animation: null,
-      pristine: true
+      pristine: true,
+      beingSwiped: false,
     }
     this.resetPosition = this.resetPosition.bind(this)
     this.handlePan = this.handlePan.bind(this)
@@ -34,10 +35,11 @@ class DraggableCard extends Component {
       startPosition: { x: 0, y: 0 }
     })
   }
-  
+
   panstart () {
     const { x, y } = this.state
     this.setState({
+      beingSwiped: true,
       animation: false,
       startPosition: { x, y },
       pristine: false
@@ -62,8 +64,8 @@ class DraggableCard extends Component {
       this.props[`onSwipe${direction}`]()
       this.props[`onOutScreen${direction}`](this.props.index)
     } else {
+      this.setState({ animation: true, beingSwiped: false })
       this.resetPosition()
-      this.setState({ animation: true })
     }
 
   }
@@ -94,7 +96,7 @@ class DraggableCard extends Component {
   componentDidMount () {
     this.hammer = new Hammer.Manager(ReactDOM.findDOMNode(this))
     this.hammer.add(new Hammer.Pan({ threshold: 2 }))
-    
+
     this.hammer.on('panstart panend pancancel panmove', this.handlePan)
     this.hammer.on('swipestart swipeend swipecancel swipemove', this.handleSwipe)
 
@@ -110,9 +112,10 @@ class DraggableCard extends Component {
     window.removeEventListener('resize', this.resetPosition)
   }
   render () {
-    const { x, y, animation, pristine } = this.state
-    const style = translate3d(x, y)
-    return <SimpleCard {...this.props} style={style} className={animation ? 'animate' : pristine ? 'inactive' : '' } />
+    const { x, y, animation, beingSwiped, pristine } = this.state
+    // console.log(beingSwiped);
+    const style = translate3d(x, y, beingSwiped)
+    return <SimpleCard {...this.props} beingSwiped={beingSwiped} style={style} className={animation ? 'animate' : pristine ? 'inactive' : '' } />
   }
 }
 
