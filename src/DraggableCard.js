@@ -3,6 +3,7 @@ import Hammer from 'hammerjs'
 import ReactDOM from 'react-dom'
 import SimpleCard from './SimpleCard'
 import { translate3d } from './utils'
+import './style.css'
 
 class DraggableCard extends Component {
   constructor (props) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { translate3d } from './utils'
+import './style.css'
 
 class Card extends Component {
   constructor (props) {
