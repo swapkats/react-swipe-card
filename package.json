@@ -1,10 +1,10 @@
 {
-  "name": "react-swipe-card",
-  "version": "0.1.4",
+  "name": "react-swipe-deck",
+  "version": "0.1.5",
   "description": "Tinder style swipe cards",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexandre-garrec/react-swipe-card.git"
+    "url": "git+https://github.com/swapkats/react-swipe-deck.git"
   },
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "rilize": "$(npm bin)/release-it --github.releaseName=\"%s (`$(npm bin)/superheroes`)\"",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
-  "author": "Alexandre Garrec <garrec.alexandre@gmail.com>",
+  "author": "Swapnil Singh <mail@swapnilsingh.me>",
   "license": "MIT",
   "keywords": [
     "react",
