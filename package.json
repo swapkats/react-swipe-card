@@ -1,10 +1,10 @@
 {
   "name": "react-swipe-deck",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Tinder style swipe cards",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/swapkats/react-swipe-deck.git"
+    "url": "git+https://github.com/swapkats/react-swipe-card.git"
   },
   "main": "index.js",
   "scripts": {
